@@ -1,21 +1,24 @@
-const express = require('express')
+/*Arquivo de Rotas - Recebe sever em app*/
+module.exports = function(app) {
+  var objReceita = require('../api/receitas/receitaService');
+  var objConta = require('../api/contas/contaService');
 
-module.exports = function(server) {
+  // Receitas 
+  app.route('/api/receitas')
+    .get(objReceita.list_receitas);
+    
+  app.route('/api/receitas/:id')
+     .get(objReceita.get)
+     .post(objReceita.post)
+     .put(objReceita.put)
+     .delete(objReceita.delete);
 
-  // API Routes
-  const router = express()
-  server.use('/api', router)
 
-  // rotas da API
+  // Contas
+  app.route('/api/contas')
+  .get(objConta.list_contas);
 
+  app.route('/api/contas/:id')
+  .get(objConta.get)
 
-  const receitaService = require('../api/receitas/receitaService')
-  receitaService.register(router, '/receitas')
-
- // const contaService = require('../api/contas/contaService')
- // contaService.register(router, '/contas')
-
-  console.log("Routes...")
-
-  
-}
+};
