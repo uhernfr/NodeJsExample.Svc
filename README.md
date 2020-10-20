@@ -1,4 +1,4 @@
-# CashGrip.svc - Simple NodeJs API with express
+#Simple NodeJs API with express
 
 ### Composição
 - Estrutura basica com rotas e schemas
